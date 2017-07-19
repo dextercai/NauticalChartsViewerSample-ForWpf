@@ -16,9 +16,22 @@ This sample makes use of the following NuGet Packages
 [MapSuite 10.0.0](https://www.nuget.org/packages?q=ThinkGeo)
 
 ### About the Code
+```csharp
+private void DrawPivot(Vertex pivotVertex, MappingConverter converter)
+{
+    Color fillColor = Color.Red;
+    Color outLineColor = Color.DarkBlue;
+    SolidBrush brush = new SolidBrush(fillColor);
+    Pen pen = new Pen(outLineColor, 2);
 
-Working...
+    PointF point = converter.GetMappingPoint(pivotVertex);
+    Vertex rightMostVertex = new Vertex(pivotVertex.X + 10, pivotVertex.Y);
+    float radius = 5f;
 
+    graphics.FillEllipse(brush, point.X - radius, point.Y - radius, radius * 2, radius * 2);
+    graphics.DrawEllipse(pen, point.X - radius, point.Y - radius, radius * 2, radius * 2);
+}
+```
 ### Getting Help
 
 [Map Suite Desktop for Wpf Wiki Resources](http://wiki.thinkgeo.com/wiki/map_suite_desktop_for_wpf)
@@ -32,7 +45,7 @@ Working...
 ### Key APIs
 This example makes use of the following APIs:
 
-Working...
+- [ThinkGeo.MapSuite.Shapes.Vertex](http://wiki.thinkgeo.com/wiki/api/thinkgeo.mapsuite.shapes.vertex)
 
 ### About Map Suite
 Map Suite is a set of powerful development components and services for the .Net Framework.
