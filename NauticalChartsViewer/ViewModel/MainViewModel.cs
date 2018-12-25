@@ -12,6 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
+using ThinkGeo.MapSuite;
 using ThinkGeo.MapSuite.Drawing;
 using ThinkGeo.MapSuite.Layers;
 using ThinkGeo.MapSuite.Shapes;
@@ -63,14 +64,14 @@ namespace NauticalChartsViewer
         private BaseMenuItem showLightDescriptions;
         private BaseMenuItem showLights;
         private BaseMenuItem showSoundingText;
-      
-     
+
+
         public MainViewModel(WpfMap map)
-        { 
+        {
             this.map = map;
-            map.MapClick += WpfMap_MapClick;  
+            map.MapClick += WpfMap_MapClick;
             menuItems = new Collection<object>(MenuItemHelper.GetMenus());
-            
+
             LoadMessageHandlers();
             SetToolbarMenuItems();
 
@@ -83,8 +84,12 @@ namespace NauticalChartsViewer
             Messenger.Default.Register<ChartSelectedItemMessage>(this, HandleChartSelectedItemMessage);
             Messenger.Default.Register<SafeWaterDepthSettingMessage>(this, HandleSafeWaterDepthMessage);
 
-            map.CurrentExtent = new RectangleShape(-130, 40, -30, 5);
-            map.Overlays.Add(WorldMapOverlayName, new WorldMapKitWmsWpfOverlay());
+            map.MapUnit = GeographyUnit.Meter;
+            map.ZoomLevelSet = ThinkGeoCloudMapsOverlay.GetZoomLevelSet();
+            map.CurrentExtent = new RectangleShape(-14471533, 4865942, -3339584, 557305);
+
+            ThinkGeoCloudMapsOverlay baseOverlay = new ThinkGeoCloudMapsOverlay();
+            map.Overlays.Add(WorldMapOverlayName, baseOverlay);
 
             InitBoundingBoxPreviewOverlay(map);
         }
@@ -662,7 +667,7 @@ namespace NauticalChartsViewer
                     {
                         map.CurrentExtent = boundingBox;
                     }
-                    
+
                     map.Refresh();
                 }
             }
@@ -827,7 +832,7 @@ namespace NauticalChartsViewer
         {
             if (isIdentify)
             {
-                PointShape point = e.WorldLocation;
+                ThinkGeo.MapSuite.Shapes.PointShape point = e.WorldLocation;
                 if (!map.Overlays.Contains(chartsOverlayName))
                 {
                     return;
