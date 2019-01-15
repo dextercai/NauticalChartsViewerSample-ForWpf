@@ -5,47 +5,47 @@ namespace NauticalChartsViewer
 {
     internal class WorldMapShowingMenuItemMessageHandler : MenuItemMessageHandler
     {
-        private const string worldMapOverlayName = "WorldMapOverlay";
+        private const string thinkGeoCloudMapsOverlayName = "ThinkGeoCloudMapsOverlay";
 
         public override void Handle(Window owner, WpfMap map, MenuItemMessage message)
         {
-            WorldMapKitWmsWpfOverlay worldMapKitOverlay;
-            if (map.Overlays.Contains(worldMapOverlayName))
+            ThinkGeoCloudMapsOverlay backgroundOverlay;
+            if (map.Overlays.Contains(thinkGeoCloudMapsOverlayName))
             {
-                worldMapKitOverlay = map.Overlays[worldMapOverlayName] as WorldMapKitWmsWpfOverlay;
+                backgroundOverlay = map.Overlays[thinkGeoCloudMapsOverlayName] as ThinkGeoCloudMapsOverlay;
             }
             else
             {
-                worldMapKitOverlay = new WorldMapKitWmsWpfOverlay();
-                map.Overlays.Insert(0, worldMapKitOverlay);
+                backgroundOverlay = new ThinkGeoCloudMapsOverlay();
+                map.Overlays.Insert(0, backgroundOverlay);
             }
 
-            worldMapKitOverlay.IsVisible = true;
+            backgroundOverlay.IsVisible = true;
             switch (message.MenuItem.Action.ToLowerInvariant())
             {
-                case "streetmap":
-                    worldMapKitOverlay.MapType = WorldMapKitMapType.Road;
+                case "light":
+                    backgroundOverlay.MapType = ThinkGeoCloudMapsMapType.Light;
                     break;
 
                 case "aerial":
-                    worldMapKitOverlay.MapType = WorldMapKitMapType.Aerial;
+                    backgroundOverlay.MapType = ThinkGeoCloudMapsMapType.Aerial;
                     break;
 
-                case "aerialwithlabels":
-                    worldMapKitOverlay.MapType = WorldMapKitMapType.AerialWithLabels;
+                case "hybrid":
+                    backgroundOverlay.MapType = ThinkGeoCloudMapsMapType.Hybrid;
                     break;
 
                 case "none":
-                    worldMapKitOverlay.IsVisible = false;
+                    backgroundOverlay.IsVisible = false;
                     break;
             }
 
-            map.Refresh(worldMapKitOverlay);
+            map.Refresh(backgroundOverlay);
         }
 
         public override string[] Actions
         {
-            get { return new[] { "streetmap", "aerial", "aerialwithlabels", "none" }; }
+            get { return new[] { "light", "aerial", "hybrid", "none" }; }
         }
     }
 }

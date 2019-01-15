@@ -27,7 +27,7 @@ namespace NauticalChartsViewer
         private const string chartsOverlayName = "ChartsOverlay";
         private const string GraticuleOverlayName = "GraticuleOverlay";
         private const string highlightOverlayName = "highlight";
-        private const string WorldMapOverlayName = "WorldMapOverlay";
+        private const string ThinkGeoCloudMapsOverlayName = "ThinkGeoCloudMapsOverlay";
 
         private InMemoryFeatureLayer boundingBoxPreviewLayer;
         private ChartSelectedItem chartSelectedItem = new ChartSelectedItem(string.Empty, null);
@@ -89,7 +89,7 @@ namespace NauticalChartsViewer
             map.CurrentExtent = new RectangleShape(-14471533, 4865942, -3339584, 557305);
 
             ThinkGeoCloudMapsOverlay baseOverlay = new ThinkGeoCloudMapsOverlay();
-            map.Overlays.Add(WorldMapOverlayName, baseOverlay);
+            map.Overlays.Add(ThinkGeoCloudMapsOverlayName, baseOverlay);
 
             InitBoundingBoxPreviewOverlay(map);
         }
@@ -513,6 +513,7 @@ namespace NauticalChartsViewer
                         NauticalChartsFeatureSource.BuildIndexFile(item.FileName, BuildIndexMode.DoNotRebuild);
                     }
                     NauticalChartsFeatureLayer layer = new NauticalChartsFeatureLayer(item.FileName);
+                    layer.FeatureSource.Projection = new Proj4Projection(4326, 3857);
 
                     layer.DrawingFeatures += hydrographyLayer_DrawingFeatures;
 
