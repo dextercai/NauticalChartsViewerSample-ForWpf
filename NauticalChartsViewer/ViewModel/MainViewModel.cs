@@ -86,7 +86,6 @@ namespace NauticalChartsViewer
 
             map.MapUnit = GeographyUnit.Meter;
             map.ZoomLevelSet = ThinkGeoCloudMapsOverlay.GetZoomLevelSet();
-            map.CurrentExtent = new RectangleShape(-14471533, 4865942, -3339584, 557305);
 
             ThinkGeoCloudMapsOverlay baseOverlay = new ThinkGeoCloudMapsOverlay();
             map.Overlays.Add(ThinkGeoCloudMapsOverlayName, baseOverlay);
@@ -513,7 +512,10 @@ namespace NauticalChartsViewer
                         NauticalChartsFeatureSource.BuildIndexFile(item.FileName, BuildIndexMode.DoNotRebuild);
                     }
                     NauticalChartsFeatureLayer layer = new NauticalChartsFeatureLayer(item.FileName);
-                    layer.FeatureSource.Projection = new Proj4Projection(4326, 3857);
+                    if (map.MapUnit == GeographyUnit.Meter)
+                    {
+                        layer.FeatureSource.Projection = new Proj4Projection(4326, 3857);
+                    }
 
                     layer.DrawingFeatures += hydrographyLayer_DrawingFeatures;
 
@@ -695,21 +697,15 @@ namespace NauticalChartsViewer
 
         private bool IsHydrographyLayerVisiable()
         {
-            bool enable = false;
-
             if (boundingBoxPreviewLayer != null)
             {
-                foreach (Feature f in boundingBoxPreviewLayer.InternalFeatures)
+                if (boundingBoxPreviewLayer.GetBoundingBox().Intersects(map.CurrentExtent))
                 {
-                    if (f.GetBoundingBox().Width / map.CurrentExtent.Width > 0.5)
-                    {
-                        enable = true;
-                        break;
-                    }
+                    return true;
                 }
             }
 
-            return enable;
+            return false;
         }
 
         private void LoadMessageHandlers()
