@@ -85,9 +85,14 @@ namespace NauticalChartsViewer
             Messenger.Default.Register<SafeWaterDepthSettingMessage>(this, HandleSafeWaterDepthMessage);
 
             map.MapUnit = GeographyUnit.Meter;
-            map.ZoomLevelSet = ThinkGeoCloudMapsOverlay.GetZoomLevelSet();
+            map.ZoomLevelSet = new ThinkGeoCloudMapsZoomLevelSet();
 
-            ThinkGeoCloudMapsOverlay baseOverlay = new ThinkGeoCloudMapsOverlay();
+            /*===========================================
+               Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require
+               a Client ID and Secret. These were sent to you via email when you signed up
+               with ThinkGeo, or you can register now at https://cloud.thinkgeo.com.
+            ===========================================*/
+            ThinkGeoCloudRasterMapsOverlay baseOverlay = new ThinkGeoCloudRasterMapsOverlay();
             map.Overlays.Add(ThinkGeoCloudMapsOverlayName, baseOverlay);
 
             InitBoundingBoxPreviewOverlay(map);

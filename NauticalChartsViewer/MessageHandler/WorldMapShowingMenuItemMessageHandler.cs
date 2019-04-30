@@ -9,14 +9,19 @@ namespace NauticalChartsViewer
 
         public override void Handle(Window owner, WpfMap map, MenuItemMessage message)
         {
-            ThinkGeoCloudMapsOverlay backgroundOverlay;
+            /*===========================================
+               Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require
+               a Client ID and Secret. These were sent to you via email when you signed up
+               with ThinkGeo, or you can register now at https://cloud.thinkgeo.com.
+            ===========================================*/
+            ThinkGeoCloudRasterMapsOverlay backgroundOverlay;
             if (map.Overlays.Contains(thinkGeoCloudMapsOverlayName))
             {
-                backgroundOverlay = map.Overlays[thinkGeoCloudMapsOverlayName] as ThinkGeoCloudMapsOverlay;
+                backgroundOverlay = map.Overlays[thinkGeoCloudMapsOverlayName] as ThinkGeoCloudRasterMapsOverlay;
             }
             else
             {
-                backgroundOverlay = new ThinkGeoCloudMapsOverlay();
+                backgroundOverlay = new ThinkGeoCloudRasterMapsOverlay();
                 map.Overlays.Insert(0, backgroundOverlay);
             }
 
@@ -24,15 +29,15 @@ namespace NauticalChartsViewer
             switch (message.MenuItem.Action.ToLowerInvariant())
             {
                 case "light":
-                    backgroundOverlay.MapType = ThinkGeoCloudMapsMapType.Light;
+                    backgroundOverlay.MapType = ThinkGeoCloudRasterMapsMapType.Light;
                     break;
 
                 case "aerial":
-                    backgroundOverlay.MapType = ThinkGeoCloudMapsMapType.Aerial;
+                    backgroundOverlay.MapType = ThinkGeoCloudRasterMapsMapType.Aerial;
                     break;
 
                 case "hybrid":
-                    backgroundOverlay.MapType = ThinkGeoCloudMapsMapType.Hybrid;
+                    backgroundOverlay.MapType = ThinkGeoCloudRasterMapsMapType.Hybrid;
                     break;
 
                 case "none":
