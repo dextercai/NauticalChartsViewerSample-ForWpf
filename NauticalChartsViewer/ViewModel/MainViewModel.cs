@@ -1,4 +1,9 @@
-﻿using GalaSoft.MvvmLight;
+﻿/*===========================================
+   Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require
+   a Client ID and Secret. These were sent to you via email when you signed up
+   with ThinkGeo, or you can register now at https://cloud.thinkgeo.com.
+===========================================*/
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using System;
@@ -87,12 +92,7 @@ namespace NauticalChartsViewer
             map.MapUnit = GeographyUnit.Meter;
             map.ZoomLevelSet = new ThinkGeoCloudMapsZoomLevelSet();
 
-            /*===========================================
-               Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require
-               a Client ID and Secret. These were sent to you via email when you signed up
-               with ThinkGeo, or you can register now at https://cloud.thinkgeo.com.
-            ===========================================*/
-            ThinkGeoCloudRasterMapsOverlay baseOverlay = new ThinkGeoCloudRasterMapsOverlay();
+            ThinkGeoCloudRasterMapsOverlay baseOverlay = new ThinkGeoCloudRasterMapsOverlay("clientId","clientSecret");
             map.Overlays.Add(ThinkGeoCloudMapsOverlayName, baseOverlay);
 
             InitBoundingBoxPreviewOverlay(map);
