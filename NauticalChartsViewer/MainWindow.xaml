@@ -278,7 +278,7 @@
                     <TextBlock Margin="0,0,5,0"><Run Text="Scale:" /><Run Text=" " /><Run x:Name="CurrentScale" /></TextBlock>
                 </StackPanel>
 
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,0">Copyright © 2015 ThinkGeo LLC</TextBlock>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,0">Copyright © 2019 ThinkGeo LLC</TextBlock>
             </Grid>
         </Border>
 
