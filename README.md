@@ -16,6 +16,10 @@ This sample makes use of the following NuGet Packages
 
 ### About the Code
 ```csharp
+// Please input your ThinkGeo Cloud ID/Secret to enable the background map. 
+ThinkGeoCloudRasterMapsOverlay baseOverlay = new ThinkGeoCloudRasterMapsOverlay("ThinkGeo Cloud clientId", "ThinkGeo Cloud clientSecret");
+
+// Set up the Nautical Charts Feature Layer
 NauticalChartsFeatureLayer nauticalChartsFeatureLayer = new NauticalChartsFeatureLayer("Nautical Charts Pathfile Name");
 
 layer.IsDepthContourTextVisible = true;
