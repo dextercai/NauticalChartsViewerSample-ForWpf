@@ -35,8 +35,8 @@ isCheckable indicate if the MenuItem can checkable.
       <menuItem header="Sounding Text" action="soundinglabel" groupName="soundinglabel" isCheckable="true" isChecked="true" canToggle="true" icon="Resource/Image/soundingtext.png" />
       <menuItem header="Light Description" action="lightdescription" groupName="lightdescription" isCheckable="true" isChecked="true" canToggle="true" icon="Resource/Image/lighthouse_text.png" />
       <separator />
-      <menuItem header="Blank Map" action="none" groupName="showworldmap" isCheckable="true" icon="Resource/Image/blank_map.png" />
-      <menuItem header="Light" action="light" groupName="showworldmap" isCheckable="true" isChecked="true" icon="Resource/Image/street.png" />
+      <menuItem header="Blank Map" action="none" groupName="showworldmap" isCheckable="true"  isChecked="true" icon="Resource/Image/blank_map.png" />
+      <menuItem header="Light" action="light" groupName="showworldmap" isCheckable="true" icon="Resource/Image/street.png" />
       <menuItem header="Aerial" action="aerial" groupName="showworldmap" isCheckable="true" icon="Resource/Image/aerial.png" />
       <menuItem header="Hybrid" action="hybrid" groupName="showworldmap" isCheckable="true" icon="Resource/Image/hybird.png" />
     </menuItems>

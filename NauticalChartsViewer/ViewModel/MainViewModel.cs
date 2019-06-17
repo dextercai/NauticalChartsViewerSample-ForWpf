@@ -92,7 +92,10 @@ namespace NauticalChartsViewer
             map.MapUnit = GeographyUnit.Meter;
             map.ZoomLevelSet = new ThinkGeoCloudMapsZoomLevelSet();
 
-            ThinkGeoCloudRasterMapsOverlay baseOverlay = new ThinkGeoCloudRasterMapsOverlay("clientId", "clientSecret");
+            // Please input your ThinkGeo Cloud ID/Secret to enable the background maps. 
+            ThinkGeoCloudRasterMapsOverlay baseOverlay = new ThinkGeoCloudRasterMapsOverlay("ThinkGeo Cloud clientId", "ThinkGeo Cloud clientSecret");
+
+            baseOverlay.IsVisible = false;
             baseOverlay.DrawingExceptionMode = DrawingExceptionMode.ThrowException;
             map.Overlays.Add(ThinkGeoCloudMapsOverlayName, baseOverlay);
 
