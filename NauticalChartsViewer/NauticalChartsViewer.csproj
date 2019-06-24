@@ -109,7 +109,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="ThinkGeo.Cloud.Client, Version=10.0.0.0, Culture=neutral, PublicKeyToken=0828af5241fb4207, processorArchitecture=MSIL">
-      <HintPath>..\packages\ThinkGeo.Cloud.Client.10.5.4\lib\net45\ThinkGeo.Cloud.Client.dll</HintPath>
+      <HintPath>..\packages\ThinkGeo.Cloud.Client.10.5.5\lib\net45\ThinkGeo.Cloud.Client.dll</HintPath>
     </Reference>
     <Reference Include="ThinkGeo.MapSuite, Version=10.0.0.0, Culture=neutral, PublicKeyToken=0828af5241fb4207, processorArchitecture=MSIL">
       <HintPath>..\packages\ThinkGeo.MapSuite.10.5.1\lib\net45\ThinkGeo.MapSuite.dll</HintPath>
@@ -124,7 +124,7 @@
       <HintPath>..\packages\ThinkGeo.MapSuite.ProductCenter.10.5.2\lib\net45\ThinkGeo.MapSuite.ProductCenter.exe</HintPath>
     </Reference>
     <Reference Include="ThinkGeo.MapSuite.Wpf, Version=10.0.0.0, Culture=neutral, PublicKeyToken=0828af5241fb4207, processorArchitecture=MSIL">
-      <HintPath>..\packages\MapSuiteDesktopForWpf-BareBone.10.5.3\lib\net45\ThinkGeo.MapSuite.Wpf.dll</HintPath>
+      <HintPath>..\packages\MapSuiteDesktopForWpf-BareBone.10.5.4\lib\net45\ThinkGeo.MapSuite.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
